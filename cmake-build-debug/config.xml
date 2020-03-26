@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configXML>
+    <camera>
+        <protocol>rtsp</protocol>
+        <camip>192.168.22.11</camip>
+        <authentication></authentication>
+        <camresolution>1920x1080</camresolution>
+        <camfps>25</camfps>
+        <at_serverip></at_serverip>
+        <at_camid></at_camid>
+        <streams>
+            <stream>
+                <streamprotocol>rtsp</streamprotocol>
+                <port>554</port>
+                <streamname>MediaInput/h264/stream_1</streamname>
+                <streamresolution>1920x1080</streamresolution>
+                <rectangles>false</rectangles>
+            </stream>
+            <stream>
+                <streamprotocol>ndi</streamprotocol>
+                <port>554</port>
+                <streamname>MediaInput/h264/stream_2</streamname>
+                <streamresolution>1280x720</streamresolution>
+                <rectangles>false</rectangles>
+            </stream>
+        </streams>
+    </camera>
+    <camera>
+        <protocol>ndi</protocol>
+        <camip>192.168.22.12</camip>
+        <authentication>admin@admin</authentication>
+        <camresolution>1920x1080</camresolution>
+        <camfps>25</camfps>
+        <at_serverip>192.148.22.12</at_serverip>
+        <at_camid>1</at_camid>
+        <streams>
+            <stream>
+                <streamprotocol>ndi</streamprotocol>
+                <port>554</port>
+                <streamname>MediaInput/ndi/stream_1</streamname>
+                <streamresolution>1920x1080</streamresolution>
+                <rectangles>true</rectangles>
+            </stream>
+        </streams>
+    </camera>
+</configXML>

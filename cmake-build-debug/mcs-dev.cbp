@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="mcs-dev"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\usr\local\lib\cmake\opencv4\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mcs-dev">
+				<Option output="/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/mcs-dev" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/phillipmai/CLionProjects/mcs-dev/include"/>
+					<Add directory="/usr/local/Cellar/libffi/3.2.1/lib/libffi-3.2.1/include"/>
+					<Add directory="/usr/local/Cellar/gstreamer/1.16.2/include/gstreamer-1.0"/>
+					<Add directory="/usr/local/Cellar/glib/2.64.1/include"/>
+					<Add directory="/usr/local/Cellar/glib/2.64.1/include/glib-2.0"/>
+					<Add directory="/usr/local/Cellar/glib/2.64.1/lib/glib-2.0/include"/>
+					<Add directory="/usr/local/opt/gettext/include"/>
+					<Add directory="/usr/local/Cellar/pcre/8.44/include"/>
+					<Add directory="/Library/Frameworks/GStreamer.framework/Headers"/>
+					<Add directory="/usr/local/Cellar/gst-plugins-base/1.16.2/include/gstreamer-1.0"/>
+					<Add directory="/usr/local/Cellar/opencv/4.2.0_3/include/opencv4"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 mcs-dev"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mcs-dev/fast">
+				<Option output="/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/mcs-dev" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/phillipmai/CLionProjects/mcs-dev/include"/>
+					<Add directory="/usr/local/Cellar/libffi/3.2.1/lib/libffi-3.2.1/include"/>
+					<Add directory="/usr/local/Cellar/gstreamer/1.16.2/include/gstreamer-1.0"/>
+					<Add directory="/usr/local/Cellar/glib/2.64.1/include"/>
+					<Add directory="/usr/local/Cellar/glib/2.64.1/include/glib-2.0"/>
+					<Add directory="/usr/local/Cellar/glib/2.64.1/lib/glib-2.0/include"/>
+					<Add directory="/usr/local/opt/gettext/include"/>
+					<Add directory="/usr/local/Cellar/pcre/8.44/include"/>
+					<Add directory="/Library/Frameworks/GStreamer.framework/Headers"/>
+					<Add directory="/usr/local/Cellar/gst-plugins-base/1.16.2/include/gstreamer-1.0"/>
+					<Add directory="/usr/local/Cellar/opencv/4.2.0_3/include/opencv4"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 mcs-dev/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/libs/tinyxml2/tinyxml2.cpp">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/libs/tinyxml2/tinyxml2.h">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/main.cpp">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/src/cameracontroller/cameracontroller.cpp">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/src/cameracontroller/cameracontroller.h">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.cpp">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.h">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/src/data/structs.h">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/src/rootstream/rootstream.cpp">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/src/rootstream/rootstream.h">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/src/server/server.cpp">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/src/server/server.h">
+			<Option target="mcs-dev"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/../../../../usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/../../../../usr/local/lib/cmake/opencv4/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/../../../../usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/Users/phillipmai/CLionProjects/mcs-dev/../../../../usr/local/lib/cmake/opencv4/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
