@@ -10,13 +10,15 @@ cameracontroller::cameracontroller() {}; // Default constructor
 cameracontroller::cameracontroller(Camera camera) {
     this->thisCamera = camera;
     this->rootstreampath = this->getrootstreampath();
-    this->thisRootstream = rootstream(this->rootstreampath, this->thisCamera.camip);
+
+    // Rootstream not needed for RTSP (at the moment)
+    //this->thisRootstream = rootstream(this->rootstreampath, this->thisCamera.camip);
 }
 
 std::string cameracontroller::getrootstreampath() {
-    if (this->thisCamera.protocol == "rtsp") {
-        return "rtsp://" + this->thisCamera.protocol + ":554/MediaInput/" + "RTSP_CODEC" + "/stream_1";
-    } else if (this->thisCamera.protocol == "ndi") {
+    if (this->thisCamera.protocol.compare("rtsp") == 0) {
+        return this->thisCamera.protocol + "://" + this->thisCamera.camip + ":554/MediaInput/" + "h264" + "/stream_1";
+    } else if (this->thisCamera.protocol.compare("ndi") == 0) {
         return "NDI URL";
     } else {
         std::cout << "Protocol incorrect. Rootstreamconnection fail.\n" << std::endl;
@@ -24,6 +26,7 @@ std::string cameracontroller::getrootstreampath() {
     }
 }
 
+// Rootstream not needed for RTSP (at the moment)
 void cameracontroller::getrootframe() {
     std::cout << "(" + this->thisCamera.camip + ") -> getrootframe()" << std::endl;
     while (1) {
@@ -33,7 +36,7 @@ void cameracontroller::getrootframe() {
 
 void cameracontroller::initclientstreams() {
     for (int i = 0; i < this->thisCamera.streamcounter; ++i) {
-        this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i]);
+        this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip);
 
         clientstream *clienstreamThread = &this->thisClientstreams[i];
         this->startclientstreamsThread[i] = std::thread(&clientstream::startstream, clienstreamThread);

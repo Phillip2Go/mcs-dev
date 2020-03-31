@@ -108,7 +108,10 @@ void server::initcameras() {
         this->thisCameracontrollers[i] = cameracontroller(this->cameras[i]);
 
         cameracontroller *controllerThread = &this->thisCameracontrollers[i];
-        this->getrootframeThread[i] = std::thread(&cameracontroller::getrootframe, controllerThread);
+
+        // Rootstream not needed for RTSP (at the moment)
+        //this->getrootframeThread[i] = std::thread(&cameracontroller::getrootframe, controllerThread);
+
         this->initclientstreamsThread[i] = std::thread(&cameracontroller::initclientstreams, controllerThread);
     }
 
@@ -118,7 +121,10 @@ void server::initcameras() {
 
 void server::startcameras() {
     for (int i = 0; i < this->camcounter; i++) {
-        this->getrootframeThread[i].join();
+
+        // Rootstream not needed for RTSP (at the moment)
+        //this->getrootframeThread[i].join();
+
         this->initclientstreamsThread[i].join();
     }
 

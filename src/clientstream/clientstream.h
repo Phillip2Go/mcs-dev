@@ -15,13 +15,20 @@
 class clientstream {
 public:
     clientstream();
-    clientstream(Stream clientstream);
+    clientstream(Stream clientstream, std::string rootstreampath, std::string camip);
+    void createstream();
     void createRTSPstreams();
     void startstream();
 
 private:
     Stream thisClientstream;
-    // Rtsp variables
+    std::string rootstreampath;
+    std::string camip;
+    std::string launchstring;
+    const gchar *rtspsrc;
+    std::string ndisrc;
+
+    // GStreamer variables
     GstRTSPServer  *server;
     GMainLoop *loop;
     GstRTSPMediaFactory  *factory;
