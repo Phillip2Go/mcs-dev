@@ -4,7 +4,6 @@ project(mcs-dev)
 set(CMAKE_CXX_STANDARD 14)
 set(SOURCE_FILES main.cpp libs/tinyxml2/tinyxml2.cpp src/server/server.h src/server/server.cpp src/cameracontroller/cameracontroller.h src/cameracontroller/cameracontroller.cpp src/rootstream/rootstream.h src/rootstream/rootstream.cpp src/data/structs.h src/clientstream/clientstream.h src/clientstream/clientstream.cpp)
 
-#
 # function to retrieve files sources inside a list of folders
 function(find_sources DIRS)
     set(_headers "")
@@ -72,13 +71,21 @@ find_sources("src" "include")
 
 #
 # OpenCV Setup
+SET("OpenCV_DIR" "/usr/local/Cellar/opencv/4.2.0_1/lib/cmake/opencv4")
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
+
+# NDI
+find_library(
+        NDI
+        libndi.4.dylib
+        PATHS
+        /libs)
 
 #
 # First include
 add_executable(mcs-dev ${SOURCE_FILES} ${HEADERS} ${SOURCES})
-target_link_libraries(mcs-dev ${OpenCV_LIBS} ${GSTREAMER_LIBRARIES} ${GST_RTSP_SERVER_LIBRARY_DIRS} ${GSTREAMER_APP_LIBRARIES})
+target_link_libraries(mcs-dev ${NDI} ${OpenCV_LIBS} ${GSTREAMER_LIBRARIES} ${GST_RTSP_SERVER_LIBRARY_DIRS} ${GSTREAMER_APP_LIBRARIES})
 include(${CMAKE_ROOT}/Modules/FindPkgConfig.cmake)
 
 # Gstreamer Setup
@@ -96,3 +103,4 @@ message("CMAKE_EXE_LINK_FLAGS: ${CMAKE_EXE_LINK_FLAGS}")
 set_target_properties(mcs-dev
         PROPERTIES COMPILE_FLAGS ${CMAKE_C_FLAGS}
         LINK_FLAGS ${CMAKE_EXE_LINK_FLAGS})
+

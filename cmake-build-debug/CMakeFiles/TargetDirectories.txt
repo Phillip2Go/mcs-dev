@@ -1,3 +1,0 @@
-/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir
