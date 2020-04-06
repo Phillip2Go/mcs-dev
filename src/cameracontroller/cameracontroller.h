@@ -7,6 +7,7 @@
 
 #include <string>
 #include <thread>
+#include <chrono>
 
 #include "../data/structs.h"
 #include "../rootstream/rootstream.h"
@@ -28,8 +29,10 @@ private:
     std::string rootstreampath;
     rootstream thisRootstream;
     cv::Mat rootframe;
+    bool initclientstreamsStatus;
     clientstream thisClientstreams[maxstreams];
-    std::thread startclientstreamsThread[maxstreams];
+    std::thread startstreamserverThread[maxstreams];
+    std::thread startsendframesThread[maxstreams];
 };
 
 #endif //MCS_DEV_CAMERACONTROLLER_H

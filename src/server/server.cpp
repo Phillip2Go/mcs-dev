@@ -100,7 +100,7 @@ void server::parsexmldata() {
         pRoot = pRoot->NextSiblingElement("camera");
     }
 
-    std::cout << "Finished XML to camera parse.\n" << std::endl;
+    std::cout << "Finished XML to camera parse.\n\n" << std::endl;
 }
 
 void server::initcameras() {
@@ -115,7 +115,6 @@ void server::initcameras() {
         this->initclientstreamsThread[i] = std::thread(&cameracontroller::initclientstreams, controllerThread);
         this->sendrootframeThread[i] = std::thread(&cameracontroller::sendrootframe, controllerThread);
     }
-
     //std::cout << "Server: Init all cameras." << std::endl;
     this->startcameras();
 }

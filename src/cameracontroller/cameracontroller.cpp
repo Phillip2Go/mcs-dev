@@ -34,10 +34,40 @@ void cameracontroller::getrootframe() {
     }
 }
 
+void cameracontroller::initclientstreams() {
+    for (int i = 0; i < this->thisCamera.streamcounter; ++i) {
+        this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip);
+
+        clientstream *clienstreamThread = &this->thisClientstreams[i];
+        this->startstreamserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);
+        this->startsendframesThread[i] = std::thread(&clientstream::startsendframes, clienstreamThread);
+    }
+
+    this->initclientstreamsStatus = true;
+    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Init all clientstreams." << std::endl;
+    this->startclientstreams();
+}
+
+void cameracontroller::startclientstreams() {
+    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start all clientstreams." << std::endl;
+    for (int i = 0; i < this->thisCamera.streamcounter; i++) {
+        this->startstreamserverThread[i].join();
+        this->startsendframesThread[i].join();
+    }
+}
+
 void cameracontroller::sendrootframe() {
+    // Waiting till all streams init. -> Threading problem.
+    while (!this->initclientstreamsStatus) {
+        std::cout << "\nCameracontroller: (" + this->thisCamera.camip + ") -> Init clientstreams not ready...\n" << std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+    }
+
+    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> All cientstreams ready." << std::endl;
     std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> sendrootframe()." << std::endl;
     for (int i = 0; i < this->thisCamera.streamcounter; i++) {
         std::string streamprotocol = this->thisClientstreams[i].getclientstreamprotocol();
+
         if (streamprotocol.compare("rtsp") == 0) {
 
             while (1) {
@@ -47,24 +77,5 @@ void cameracontroller::sendrootframe() {
         } else if (streamprotocol.compare("ndi") == 0) {
 
         }
-    }
-}
-
-void cameracontroller::initclientstreams() {
-    for (int i = 0; i < this->thisCamera.streamcounter; ++i) {
-        this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip);
-
-        clientstream *clienstreamThread = &this->thisClientstreams[i];
-        this->startclientstreamsThread[i] = std::thread(&clientstream::startstream, clienstreamThread);
-    }
-
-    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Init all clientstreams." << std::endl;
-    this->startclientstreams();
-}
-
-void cameracontroller::startclientstreams() {
-    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start all clientstreams." << std::endl;
-    for (int i = 0; i < this->thisCamera.streamcounter; i++) {
-        this->startclientstreamsThread[i].join();
     }
 }

@@ -12,7 +12,6 @@ clientstream::clientstream(Stream clientstream, std::string rootstreampath, std:
     this->thisClientstream = clientstream;
     this->rootstreampath = rootstreampath;
     this->camip = camip;
-    this->streamprotocol = clientstream.streamprotocol;
     this->createstream();
 }
 
@@ -32,8 +31,9 @@ void clientstream::getlaunchstring() {
 
 void clientstream::createstream() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
-        //this->getlaunchstring();
-        //this->createRTSPserver();
+        //this->rtspsrc = "appsrc ! videoconvert ! x264enc ! mpegtsmux ! udpsink host=localhost port=5000";
+        this->getlaunchstring();
+        this->createRTSPserver();
 
     } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {
         this->ndisrc = rootstreampath;
@@ -64,10 +64,21 @@ void clientstream::createRTSPserver() {
     gst_rtsp_server_attach (this->server, NULL);
 }
 
-void clientstream::startstream() {
+void clientstream::startstreamserver() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
         /* start serving gst-rtsp-server */
-        //g_main_loop_run (this->loop);
+        g_main_loop_run (this->loop);
+
+    } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {
+
+    }
+}
+
+void clientstream::startsendframes() {
+    if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
+        while (1) {
+
+        }
 
     } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {
 
@@ -75,7 +86,7 @@ void clientstream::startstream() {
 }
 
 std::string clientstream::getclientstreamprotocol() {
-    return this->streamprotocol;
+    return this->thisClientstream.streamprotocol;
 }
 
 void clientstream::setrootframe(cv::Mat frame) {

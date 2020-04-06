@@ -20,7 +20,8 @@ public:
     void getlaunchstring();
     void createstream();
     void createRTSPserver();
-    void startstream();
+    void startstreamserver();
+    void startsendframes();
 
     std::string getclientstreamprotocol();
     void setrootframe(cv::Mat frame);
@@ -34,8 +35,9 @@ private:
     const gchar *rtspsrc;
     std::string ndisrc;
 
-    // Rooframe from rootstream
+    // OpenCV variables
     cv::Mat rootframe;
+    cv::VideoWriter writer;
 
     // GStreamer variables
     GstRTSPServer  *server;
