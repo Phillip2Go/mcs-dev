@@ -12,31 +12,35 @@ clientstream::clientstream(Stream clientstream, std::string rootstreampath, std:
     this->thisClientstream = clientstream;
     this->rootstreampath = rootstreampath;
     this->camip = camip;
+    this->streamprotocol = clientstream.streamprotocol;
     this->createstream();
+}
+
+void clientstream::getlaunchstring() {
+    gchar *launchsstart = "( rtspsrc location=";
+    gchar *launchsettings = " ! rtph264depay ! h264parse ! rtph264pay name=pay0 pt=96 )";
+
+    int srclength = this->rootstreampath.length();
+    gchar src_array[srclength + 1];
+    strcpy(src_array, this->rootstreampath.c_str());
+
+    this->launchstring += launchsstart;
+    this->launchstring += src_array;
+    this->launchstring += launchsettings;
+    this->rtspsrc = launchstring.c_str();
 }
 
 void clientstream::createstream() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
-        gchar *launchsstart = "( rtspsrc location=";
-        gchar *launchsettings = " ! rtph264depay ! h264parse ! rtph264pay name=pay0 pt=96 )";
-
-        int srclength = this->rootstreampath.length();
-        gchar src_array[srclength + 1];
-        strcpy(src_array, this->rootstreampath.c_str());
-
-        this->launchstring += launchsstart;
-        this->launchstring += src_array;
-        this->launchstring += launchsettings;
-        this->rtspsrc = launchstring.c_str();
-
-        this->createRTSPstreams();
+        //this->getlaunchstring();
+        //this->createRTSPserver();
 
     } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {
         this->ndisrc = rootstreampath;
     }
 }
 
-void clientstream::createRTSPstreams() {
+void clientstream::createRTSPserver() {
     this->server = gst_rtsp_server_new ();
     //gst_rtsp_server_set_address(this->server, this->camip.c_str());
     gst_rtsp_server_set_service(this->server, reinterpret_cast<const gchar *>(this->thisClientstream.port.c_str()));
@@ -62,9 +66,18 @@ void clientstream::createRTSPstreams() {
 
 void clientstream::startstream() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
-        /* start serving */
-        g_main_loop_run (this->loop);
+        /* start serving gst-rtsp-server */
+        //g_main_loop_run (this->loop);
+
     } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {
 
     }
+}
+
+std::string clientstream::getclientstreamprotocol() {
+    return this->streamprotocol;
+}
+
+void clientstream::setrootframe(cv::Mat frame) {
+    this->rootframe = frame;
 }

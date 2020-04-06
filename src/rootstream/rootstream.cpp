@@ -14,14 +14,14 @@ rootstream::rootstream(std::string rootstreampath, std::string camip) {
 }
 
 void rootstream::initstream() {
-    //this->capture = cv::VideoCapture(this->rootstreampath);
-    this->capture = cv::VideoCapture(0);
+    this->capture = cv::VideoCapture(this->rootstreampath);
+    //this->capture = cv::VideoCapture(0);
 
     if (!capture.isOpened()) {
         std::cout << "Error opening video stream." << std::endl;
         this->reconnectstream();
     } else {
-        std::cout << "(" + this->camip + ") -> Connected to Rootstream. Start reading root frames." << std::endl;
+        std::cout << "Cameracontroller: (" + this->camip + ") -> Connected to Rootstream. Start reading root frames." << std::endl;
         this->readrootframe();
     }
 }

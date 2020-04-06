@@ -29,6 +29,7 @@ private:
     cameracontroller thisCameracontrollers[maxcams];
     std::thread getrootframeThread[maxcams];
     std::thread initclientstreamsThread[maxcams];
+    std::thread sendrootframeThread[maxcams];
 };
 
 #endif //CMAKELIBS_SERVER_H

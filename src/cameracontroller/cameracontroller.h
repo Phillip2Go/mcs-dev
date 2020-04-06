@@ -19,6 +19,7 @@ public:
     cameracontroller(Camera camera);
     std::string getrootstreampath();
     void getrootframe();
+    void sendrootframe();
     void initclientstreams();
     void startclientstreams();
 

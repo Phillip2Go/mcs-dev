@@ -2,7 +2,7 @@
 <configXML>
     <camera>
         <protocol>rtsp</protocol>
-        <camip>192.168.178.34</camip>
+        <camip>192.168.0.62</camip>
         <authentication></authentication>
         <camresolution>1920x1080</camresolution>
         <camfps>25</camfps>
@@ -12,14 +12,14 @@
             <stream>
                 <streamprotocol>rtsp</streamprotocol>
                 <port>8554</port>
-                <streamname>/MediaInput/h264/stream_1</streamname>
+                <streamname>/MediaInput/stream_1</streamname>
                 <streamresolution>1920x1080</streamresolution>
                 <rectangles>true</rectangles>
             </stream>
             <stream>
                 <streamprotocol>ndi</streamprotocol>
                 <port>8554</port>
-                <streamname>/MediaInput/h264/stream_2</streamname>
+                <streamname>/MediaInput/stream_2</streamname>
                 <streamresolution>1280x720</streamresolution>
                 <rectangles>false</rectangles>
             </stream>

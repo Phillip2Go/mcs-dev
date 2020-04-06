@@ -11,8 +11,8 @@ cameracontroller::cameracontroller(Camera camera) {
     this->thisCamera = camera;
     this->rootstreampath = this->getrootstreampath();
 
-    // Rootstream not needed for RTSP (at the moment)
-    //this->thisRootstream = rootstream(this->rootstreampath, this->thisCamera.camip);
+    // Rootstream via OpenCV
+    this->thisRootstream = rootstream(this->rootstreampath, this->thisCamera.camip);
 }
 
 std::string cameracontroller::getrootstreampath() {
@@ -26,11 +26,27 @@ std::string cameracontroller::getrootstreampath() {
     }
 }
 
-// Rootstream not needed for RTSP (at the moment)
+// Rootstream via OpenCV
 void cameracontroller::getrootframe() {
-    std::cout << "(" + this->thisCamera.camip + ") -> getrootframe()" << std::endl;
+    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> getrootframe()." << std::endl;
     while (1) {
         this->rootframe = this->thisRootstream.readrootframe();
+    }
+}
+
+void cameracontroller::sendrootframe() {
+    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> sendrootframe()." << std::endl;
+    for (int i = 0; i < this->thisCamera.streamcounter; i++) {
+        std::string streamprotocol = this->thisClientstreams[i].getclientstreamprotocol();
+        if (streamprotocol.compare("rtsp") == 0) {
+
+            while (1) {
+                this->thisClientstreams[i].setrootframe(this->rootframe);
+            }
+
+        } else if (streamprotocol.compare("ndi") == 0) {
+
+        }
     }
 }
 
@@ -47,7 +63,7 @@ void cameracontroller::initclientstreams() {
 }
 
 void cameracontroller::startclientstreams() {
-    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start all clientstreams.\n" << std::endl;
+    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start all clientstreams." << std::endl;
     for (int i = 0; i < this->thisCamera.streamcounter; i++) {
         this->startclientstreamsThread[i].join();
     }

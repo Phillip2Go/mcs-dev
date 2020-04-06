@@ -109,24 +109,25 @@ void server::initcameras() {
 
         cameracontroller *controllerThread = &this->thisCameracontrollers[i];
 
-        // Rootstream not needed for RTSP (at the moment)
-        //this->getrootframeThread[i] = std::thread(&cameracontroller::getrootframe, controllerThread);
+        // Rootstream via OpenCV
+        this->getrootframeThread[i] = std::thread(&cameracontroller::getrootframe, controllerThread);
 
         this->initclientstreamsThread[i] = std::thread(&cameracontroller::initclientstreams, controllerThread);
+        this->sendrootframeThread[i] = std::thread(&cameracontroller::sendrootframe, controllerThread);
     }
 
+    //std::cout << "Server: Init all cameras." << std::endl;
     this->startcameras();
-    std::cout << "Init all cameras.\n" << std::endl;
 }
 
 void server::startcameras() {
+    //std::cout << "Server: All cameras started.\n" << std::endl;
     for (int i = 0; i < this->camcounter; i++) {
 
-        // Rootstream not needed for RTSP (at the moment)
-        //this->getrootframeThread[i].join();
+        // Rootstream via OpenCV
+        this->getrootframeThread[i].join();
 
         this->initclientstreamsThread[i].join();
+        this->sendrootframeThread[i].join();
     }
-
-    std::cout << "All cameras started.\n" << std::endl;
 }
