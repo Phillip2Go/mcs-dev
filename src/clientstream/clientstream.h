@@ -5,6 +5,9 @@
 #ifndef MCS_DEV_CLIENTSTREAM_H
 #define MCS_DEV_CLIENTSTREAM_H
 
+#include <thread>
+#include <chrono>
+
 #include <gst/gst.h>
 #include <glib.h>
 #include <gst/rtsp-server/rtsp-server.h>

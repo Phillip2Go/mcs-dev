@@ -31,7 +31,7 @@ void clientstream::getlaunchstring() {
 
 void clientstream::createstream() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
-        //this->rtspsrc = "appsrc ! videoconvert ! x264enc ! mpegtsmux ! udpsink host=localhost port=5000";
+        //this->rtspsrc = "appsrc ! x264enc ! mpegtsmux ! rtpmp2tpay ! udpsink host=localhost port=5500";
         this->getlaunchstring();
         this->createRTSPserver();
 
@@ -76,9 +76,6 @@ void clientstream::startstreamserver() {
 
 void clientstream::startsendframes() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
-        while (1) {
-
-        }
 
     } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {
 
