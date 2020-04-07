@@ -7,6 +7,9 @@
 
 #include <string>
 
+#include <gst/gst.h>
+#include <glib.h>
+#include <gst/rtsp-server/rtsp-server.h>
 #include <opencv2/opencv.hpp>
 
 
@@ -14,12 +17,31 @@ class rootstream {
 public:
     rootstream();
     rootstream(std::string rootstreampath, std::string camip);
+
+    // GStreamer functions
+    void getrootlaunchstring();
+    void createrootstream();
+    void createrootRTSPserver();
+    void startrootstreamserver();
+
+    // OpenCV functions
     void initstream();
     void reconnectstream();
     cv::Mat readrootframe();
 
 private:
     std::string rootstreampath;
+    std::string rootlaunchstring;
+    const gchar *rootrtspsrc;
+
+    // GStreamer variables
+    GstRTSPServer  *server;
+    GMainLoop *loop;
+    GstRTSPMediaFactory  *factory;
+    GstRTSPMountPoints *mounts;
+    bool createRTSPserverstatus;
+
+    // OpenCV variables
     cv::VideoCapture capture;
     std::string camip;
 };

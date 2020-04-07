@@ -38,15 +38,15 @@ private:
     const gchar *rtspsrc;
     std::string ndisrc;
 
-    // OpenCV variables
-    cv::Mat rootframe;
-    cv::VideoWriter writer;
-
     // GStreamer variables
     GstRTSPServer  *server;
     GMainLoop *loop;
     GstRTSPMediaFactory  *factory;
     GstRTSPMountPoints *mounts;
+
+    // OpenCV variables
+    cv::Mat rootframe;
+    cv::VideoWriter writer;
 };
 
 #endif //MCS_DEV_CLIENTSTREAM_H
