@@ -17,7 +17,7 @@ clientstream::clientstream(Stream clientstream, std::string rootstreampath, std:
 
 void clientstream::getlaunchstring() {
     gchar *launchsstart = "( rtspsrc location=";
-    gchar *launchsettings = " ! rtph264depay ! h264parse ! rtph264pay name=pay0 pt=96 )";
+    gchar *launchsettings = " latency=0 ! rtph264depay ! h264parse ! rtph264pay name=pay0 pt=96 )";
 
     int srclength = this->rootstreampath.length();
     gchar src_array[srclength + 1];
@@ -31,8 +31,7 @@ void clientstream::getlaunchstring() {
 
 void clientstream::createstream() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
-        this->rtspsrc = "appsrc name=source is-live=true block=true format=GST_FORMAT_TIME caps=video/x-raw,format=BGR,width=640,height=480,framerate=30/1 ! videoconvert ! video/x-raw,format=I420 ! x264enc speed-preset=ultrafast tune=zerolatency ! udpsink port=5050";
-        //this->getlaunchstring();
+        this->getlaunchstring();
         this->createRTSPserver();
 
     } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {
@@ -43,12 +42,12 @@ void clientstream::createstream() {
 void clientstream::createRTSPserver() {
     this->server = gst_rtsp_server_new ();
     //gst_rtsp_server_set_address(this->server, this->camip.c_str());
-    gst_rtsp_server_set_service(this->server, reinterpret_cast<const gchar *>(this->thisClientstream.port.c_str()));
+    //gst_rtsp_server_set_service(this->server, reinterpret_cast<const gchar *>(this->thisClientstream.port.c_str()));
 
     this->factory = factory = gst_rtsp_media_factory_new ();
     gst_rtsp_media_factory_set_launch (this->factory, this->rtspsrc);
 
-    gst_rtsp_media_factory_set_shared(this->factory, TRUE);
+    gst_rtsp_media_factory_set_shared(this->factory, FALSE);
 
     /* get the default mount points from the server */
     this->mounts = gst_rtsp_server_get_mount_points (this->server);
@@ -62,11 +61,16 @@ void clientstream::createRTSPserver() {
 
     /* attach the server to the default maincontext */
     gst_rtsp_server_attach (this->server, NULL);
+
+    this->createRTSPserverstatus = true;
 }
 
 void clientstream::startstreamserver() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
+        // Threading problem
+        while (!this->createRTSPserverstatus) {}
         /* start serving gst-rtsp-server */
+        std::cout << "Clientstream: (" + this->thisClientstream.streamname + ") -> g_main_loop_run." << std::endl;
         g_main_loop_run (this->loop);
 
     } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {

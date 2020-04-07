@@ -23,6 +23,7 @@ public:
     void createrootstream();
     void createrootRTSPserver();
     void startrootstreamserver();
+    bool check_g_main_loop_is_running();
 
     // OpenCV functions
     void initstream();
@@ -35,11 +36,11 @@ private:
     const gchar *rootrtspsrc;
 
     // GStreamer variables
-    GstRTSPServer  *server;
-    GMainLoop *loop;
-    GstRTSPMediaFactory  *factory;
-    GstRTSPMountPoints *mounts;
-    bool createRTSPserverstatus;
+    GstRTSPServer  *rootserver;
+    GMainLoop *rootloop;
+    GstRTSPMediaFactory  *rootfactory;
+    GstRTSPMountPoints *rootmounts;
+    bool rootcreateRTSPserverstatus;
 
     // OpenCV variables
     cv::VideoCapture capture;

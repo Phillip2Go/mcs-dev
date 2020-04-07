@@ -214,7 +214,7 @@ char* StrPair::ParseText( char* p, const char* endTag, int strFlags, int* curLin
     const char  endChar = *endTag;
     size_t length = strlen( endTag );
 
-    // Inner loop of text parsing.
+    // Inner rootloop of text parsing.
     while ( *p ) {
         if ( *p == endChar && strncmp( p, endTag, length ) == 0 ) {
             Set( start, p, strFlags );
@@ -367,7 +367,7 @@ const char* StrPair::GetStr()
             }
             *q = 0;
         }
-        // The loop below has plenty going on, and this
+        // The rootloop below has plenty going on, and this
         // is a less useful mode. Break it out.
         if ( _flags & NEEDS_WHITESPACE_COLLAPSING ) {
             CollapseWhitespace();

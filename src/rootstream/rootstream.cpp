@@ -19,7 +19,7 @@ rootstream::rootstream(std::string rootstreampath, std::string camip) {
 
 void rootstream::getrootlaunchstring() {
     gchar *launchsstart = "( rtspsrc location=";
-    gchar *launchsettings = " ! rtph264depay ! h264parse ! rtph264pay name=pay0 pt=96 )";
+    gchar *launchsettings = " latency=0 ! rtph264depay ! h264parse ! rtph264pay name=pay0 pt=96 )";
 
     int srclength = this->rootstreampath.length();
     gchar src_array[srclength + 1];
@@ -37,39 +37,44 @@ void rootstream::createrootstream() {
 }
 
 void rootstream::createrootRTSPserver() {
-    this->server = gst_rtsp_server_new ();
+    this->rootserver = gst_rtsp_server_new ();
 
-    this->factory = factory = gst_rtsp_media_factory_new ();
-    gst_rtsp_media_factory_set_launch (this->factory, this->rootrtspsrc);
+    this->rootfactory = rootfactory = gst_rtsp_media_factory_new ();
+    gst_rtsp_media_factory_set_launch (this->rootfactory, this->rootrtspsrc);
 
-    gst_rtsp_media_factory_set_shared(this->factory, TRUE);
+    gst_rtsp_media_factory_set_shared(this->rootfactory, FALSE);
 
-    /* get the default mount points from the server */
-    this->mounts = gst_rtsp_server_get_mount_points (this->server);
+    /* get the default mount points from the rootserver */
+    this->rootmounts = gst_rtsp_server_get_mount_points (this->rootserver);
 
-    // Generate rootstream server url
+    // Generate rootstream rootserver url
     const gchar *slash = "/";
     std::string url = slash + this->camip;
     const gchar *rootstreamurl = url.c_str();
 
     /* attach the video test signal to the "/test" URL */
-    gst_rtsp_mount_points_add_factory (this->mounts, rootstreamurl , this->factory);
-    g_object_unref (this->mounts);
+    gst_rtsp_mount_points_add_factory (this->rootmounts, rootstreamurl , this->rootfactory);
+    g_object_unref (this->rootmounts);
 
     /* make a mainloop for the default context */
-    this->loop = g_main_loop_new (NULL, FALSE);
+    this->rootloop = g_main_loop_new (NULL, FALSE);
 
-    /* attach the server to the default maincontext */
-    gst_rtsp_server_attach (this->server, NULL);
+    /* attach the rootserver to the default maincontext */
+    gst_rtsp_server_attach (this->rootserver, NULL);
 
-    this->createRTSPserverstatus = true;
+    this->rootcreateRTSPserverstatus = true;
 }
 
 void rootstream::startrootstreamserver() {
-    // Thread error
-    while (!this->createRTSPserverstatus) {}
-    /* start serving gst-rtsp-server */
-    g_main_loop_run (this->loop);
+    // Threading problem
+    while (!this->rootcreateRTSPserverstatus) {}
+    /* start serving gst-rtsp-rootserver */
+    std::cout << "Rootstream: (" + this->camip + ") -> g_main_loop_run." << std::endl;
+    g_main_loop_run (this->rootloop);
+}
+
+bool rootstream::check_g_main_loop_is_running() {
+    return g_main_loop_is_running(this->rootloop);
 }
 
 void rootstream::initstream() {

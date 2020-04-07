@@ -33,7 +33,7 @@ private:
     clientstream thisClientstreams[maxstreams];
     std::thread startstreamserverThread[maxstreams];
     std::thread startsendframesThread[maxstreams];
-    std::thread startrootRTSPserverThread[maxstreams];
+    std::thread startrootRTSPserverThread;
 };
 
 #endif //MCS_DEV_CAMERACONTROLLER_H

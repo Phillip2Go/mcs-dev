@@ -37,6 +37,7 @@ private:
     std::string launchstring;
     const gchar *rtspsrc;
     std::string ndisrc;
+    bool createRTSPserverstatus;
 
     // GStreamer variables
     GstRTSPServer  *server;

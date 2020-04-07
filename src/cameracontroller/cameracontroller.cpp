@@ -59,18 +59,25 @@ void cameracontroller::sendrootframe() {
 }
 
 void cameracontroller::initclientstreams() {
+    rootstream *rootstreamThread = &this->thisRootstream;
+    this->startrootRTSPserverThread = std::thread(&rootstream::startrootstreamserver, rootstreamThread);
+
+    bool check = this->thisRootstream.check_g_main_loop_is_running();
+    while (check == 0) {check = this->thisRootstream.check_g_main_loop_is_running();}
+
+    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start init all clientstreams." << std::endl;
+
     for (int i = 0; i < this->thisCamera.streamcounter; ++i) {
         this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip);
 
         clientstream *clienstreamThread = &this->thisClientstreams[i];
-        this->startrootRTSPserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);
+        //this->startstreamserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);
 
         // OpenCV threads
-        //this->startstreamserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);
         //this->startsendframesThread[i] = std::thread(&clientstream::startsendframes, clienstreamThread);
     }
-
     this->initclientstreamsStatus = true;
+
     std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Init all clientstreams." << std::endl;
     this->startclientstreams();
 }
@@ -78,10 +85,10 @@ void cameracontroller::initclientstreams() {
 void cameracontroller::startclientstreams() {
     std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start all clientstreams." << std::endl;
     for (int i = 0; i < this->thisCamera.streamcounter; i++) {
-        this->startrootRTSPserverThread[i].join();
+        if (i < 1) this->startrootRTSPserverThread.join();
+        //this->startstreamserverThread[i].join();
 
         // OpenCV threads
-        //this->startstreamserverThread[i].join();
         //this->startsendframesThread[i].join();
     }
 }
