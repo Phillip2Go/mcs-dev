@@ -110,10 +110,10 @@ void server::initcameras() {
         cameracontroller *controllerThread = &this->thisCameracontrollers[i];
 
         // Rootstream via OpenCV
-        this->getrootframeThread[i] = std::thread(&cameracontroller::getrootframe, controllerThread);
+        //this->getrootframeThread[i] = std::thread(&cameracontroller::getrootframe, controllerThread);
+        //this->sendrootframeThread[i] = std::thread(&cameracontroller::sendrootframe, controllerThread);
 
         this->initclientstreamsThread[i] = std::thread(&cameracontroller::initclientstreams, controllerThread);
-        this->sendrootframeThread[i] = std::thread(&cameracontroller::sendrootframe, controllerThread);
     }
     //std::cout << "Server: Init all cameras." << std::endl;
     this->startcameras();
@@ -124,9 +124,9 @@ void server::startcameras() {
     for (int i = 0; i < this->camcounter; i++) {
 
         // Rootstream via OpenCV
-        this->getrootframeThread[i].join();
+        //this->getrootframeThread[i].join();
+        //this->sendrootframeThread[i].join();
 
         this->initclientstreamsThread[i].join();
-        this->sendrootframeThread[i].join();
     }
 }

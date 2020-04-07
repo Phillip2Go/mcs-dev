@@ -31,8 +31,8 @@ void clientstream::getlaunchstring() {
 
 void clientstream::createstream() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
-        //this->rtspsrc = "appsrc ! x264enc ! mpegtsmux ! rtpmp2tpay ! udpsink host=localhost port=5500";
-        this->getlaunchstring();
+        this->rtspsrc = "appsrc name=source is-live=true block=true format=GST_FORMAT_TIME caps=video/x-raw,format=BGR,width=640,height=480,framerate=30/1 ! videoconvert ! video/x-raw,format=I420 ! x264enc speed-preset=ultrafast tune=zerolatency ! udpsink port=5050";
+        //this->getlaunchstring();
         this->createRTSPserver();
 
     } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {
@@ -76,7 +76,7 @@ void clientstream::startstreamserver() {
 
 void clientstream::startsendframes() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
-
+        
     } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {
 
     }

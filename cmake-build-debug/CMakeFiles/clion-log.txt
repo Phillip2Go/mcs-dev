@@ -1,25 +1,5 @@
-"/Users/phillipmai/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/193.6494.38/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/bin/g++ -G "CodeBlocks - Unix Makefiles" /Users/phillipmai/CLionProjects/mcs-dev
--- The C compiler identification is AppleClang 11.0.3.11030032
--- The CXX compiler identification is AppleClang 11.0.3.11030032
--- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
--- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/g++
--- Check for working CXX compiler: /usr/bin/g++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Found PkgConfig: /usr/local/bin/pkg-config (found version "0.29.2") 
--- Checking for module 'glib-2.0'
---   Found glib-2.0, version 2.64.1
+"/Users/phillipmai/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/193.6911.21/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/bin/g++ -G "CodeBlocks - Unix Makefiles" /Users/phillipmai/CLionProjects/mcs-dev
 -- Building Debug ERTSP
--- Checking for one of the modules 'gstreamer-1.0'
--- Checking for one of the modules 'gstreamer-app-1.0'
--- Found OpenCV: /usr/local/Cellar/opencv/4.2.0_3 (found version "4.2.0") 
 CMAKE_C_FLAGS: -I/usr/local/Cellar/libffi/3.2.1/lib/libffi-3.2.1/include -I/usr/local/Cellar/gstreamer/1.16.2/include/gstreamer-1.0 -I/usr/local/Cellar/glib/2.64.1/include -I/usr/local/Cellar/glib/2.64.1/include/glib-2.0 -I/usr/local/Cellar/glib/2.64.1/lib/glib-2.0/include -I/usr/local/opt/gettext/include -I/usr/local/Cellar/pcre/8.44/include
 CMAKE_EXE_LINK_FLAGS: -L/usr/local/Cellar/gstreamer/1.16.2/lib -L/usr/local/Cellar/glib/2.64.1/lib -L/usr/local/opt/gettext/lib -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 -lintl
 -- Configuring done
