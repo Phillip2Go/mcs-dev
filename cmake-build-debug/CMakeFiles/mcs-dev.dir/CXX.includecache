@@ -494,12 +494,6 @@ chrono
 ../clientstream/clientstream.h
 /Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.cpp
-iostream
--
-clientstream.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.h
-
 /Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.h
 thread
 -
@@ -519,10 +513,6 @@ opencv2/opencv.hpp
 /Users/phillipmai/CLionProjects/mcs-dev/src/data/structs.h
 string
 -
-
-/Users/phillipmai/CLionProjects/mcs-dev/src/rootstream/rootstream.cpp
-rootstream.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/rootstream/rootstream.h
 
 /Users/phillipmai/CLionProjects/mcs-dev/src/rootstream/rootstream.h
 string

@@ -100,7 +100,7 @@ void server::parsexmldata() {
         pRoot = pRoot->NextSiblingElement("camera");
     }
 
-    std::cout << "Finished XML to camera parse.\n\n" << std::endl;
+    std::cout << "Finished XML to camera parse.\n" << std::endl;
 }
 
 void server::initcameras() {
@@ -115,12 +115,11 @@ void server::initcameras() {
 
         this->initclientstreamsThread[i] = std::thread(&cameracontroller::initclientstreams, controllerThread);
     }
-    //std::cout << "Server: Init all cameras." << std::endl;
+
     this->startcameras();
 }
 
 void server::startcameras() {
-    //std::cout << "Server: All cameras started.\n" << std::endl;
     for (int i = 0; i < this->camcounter; i++) {
 
         // Rootstream via OpenCV

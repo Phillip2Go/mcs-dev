@@ -11,8 +11,9 @@ cameracontroller::cameracontroller(Camera camera) {
     this->thisCamera = camera;
     this->rootstreampath = this->getrootstreampath();
 
-    // Rootstream via OpenCV
-    this->thisRootstream = rootstream(this->rootstreampath, this->thisCamera.camip);
+    if (!this->rootstreampath.compare("") == 0) {
+        this->thisRootstream = rootstream(this->rootstreampath, this->thisCamera.camip);
+    }
 }
 
 std::string cameracontroller::getrootstreampath() {
@@ -21,7 +22,7 @@ std::string cameracontroller::getrootstreampath() {
     } else if (this->thisCamera.protocol.compare("ndi") == 0) {
         return "NDI URL";
     } else {
-        std::cout << "Protocol incorrect. Rootstreamconnection fail.\n" << std::endl;
+        std::cout << " --ERROR--\nCamera (" + this->thisCamera.camip + ") -> Connection could not be established.\n" << std::endl;
         return "";
     }
 }
@@ -59,36 +60,43 @@ void cameracontroller::sendrootframe() {
 }
 
 void cameracontroller::initclientstreams() {
-    rootstream *rootstreamThread = &this->thisRootstream;
-    this->startrootRTSPserverThread = std::thread(&rootstream::startrootstreamserver, rootstreamThread);
+    if (!this->rootstreampath.compare("") == 0) {
+        rootstream *rootstreamThread = &this->thisRootstream;
+        this->startrootRTSPserverThread = std::thread(&rootstream::startrootstreamserver, rootstreamThread);
 
-    bool check = this->thisRootstream.check_g_main_loop_is_running();
-    while (check == 0) {check = this->thisRootstream.check_g_main_loop_is_running();}
+        bool check = this->thisRootstream.check_g_main_loop_is_running();
+        while (check == 0) {check = this->thisRootstream.check_g_main_loop_is_running();}
 
-    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start init all clientstreams." << std::endl;
+        //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start init all clientstreams." << std::endl;
 
-    for (int i = 0; i < this->thisCamera.streamcounter; ++i) {
-        this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip);
+        for (int i = 0; i < this->thisCamera.streamcounter; ++i) {
+            this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip);
 
-        clientstream *clienstreamThread = &this->thisClientstreams[i];
-        //this->startstreamserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);
+            clientstream *clienstreamThread = &this->thisClientstreams[i];
+            //this->startstreamserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);
 
-        // OpenCV threads
-        //this->startsendframesThread[i] = std::thread(&clientstream::startsendframes, clienstreamThread);
+            // OpenCV threads
+            //this->startsendframesThread[i] = std::thread(&clientstream::startsendframes, clienstreamThread);
+        }
+        this->initclientstreamsStatus = true;
+
+        //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Init all clientstreams." << std::endl;
+        this->startclientstreams();
     }
-    this->initclientstreamsStatus = true;
-
-    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Init all clientstreams." << std::endl;
-    this->startclientstreams();
 }
 
 void cameracontroller::startclientstreams() {
-    std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start all clientstreams." << std::endl;
-    for (int i = 0; i < this->thisCamera.streamcounter; i++) {
-        if (i < 1) this->startrootRTSPserverThread.join();
-        //this->startstreamserverThread[i].join();
+    if (!this->rootstreampath.compare("") == 0) {
+        //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start all clientstreams." << std::endl;
+        for (int i = 0; i < this->thisCamera.streamcounter; i++) {
+            if (i < 1) {
+                std::cout << "Camera (" + this->thisCamera.camip + ") -> rtsp://localhost:8554/" + this->thisCamera.camip << std::endl;
+                this->startrootRTSPserverThread.join();
+            }
+            //this->startstreamserverThread[i].join();
 
-        // OpenCV threads
-        //this->startsendframesThread[i].join();
+            // OpenCV threads
+            //this->startsendframesThread[i].join();
+        }
     }
 }
