@@ -8,11 +8,12 @@
 cameracontroller::cameracontroller() {}; // Default constructor
 
 cameracontroller::cameracontroller(Camera camera) {
+    this->controllerfactory = gst_rtsp_media_factory_new();
     this->thisCamera = camera;
     this->rootstreampath = this->getrootstreampath();
 
     if (!this->rootstreampath.compare("") == 0) {
-        this->thisRootstream = rootstream(this->rootstreampath, this->thisCamera.camip);
+        this->thisRootstream = rootstream(this->rootstreampath, this->thisCamera.camip, this->controllerfactory);
     }
 }
 
@@ -70,10 +71,10 @@ void cameracontroller::initclientstreams() {
         //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start init all clientstreams." << std::endl;
 
         for (int i = 0; i < this->thisCamera.streamcounter; ++i) {
-            this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip);
+             this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip, this->controllerfactory);
 
             clientstream *clienstreamThread = &this->thisClientstreams[i];
-            //this->startstreamserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);
+            this->startstreamserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);
 
             // OpenCV threads
             //this->startsendframesThread[i] = std::thread(&clientstream::startsendframes, clienstreamThread);
@@ -93,7 +94,7 @@ void cameracontroller::startclientstreams() {
                 std::cout << "Camera (" + this->thisCamera.camip + ") -> rtsp://localhost:8554/" + this->thisCamera.camip << std::endl;
                 this->startrootRTSPserverThread.join();
             }
-            //this->startstreamserverThread[i].join();
+            this->startstreamserverThread[i].join();
 
             // OpenCV threads
             //this->startsendframesThread[i].join();

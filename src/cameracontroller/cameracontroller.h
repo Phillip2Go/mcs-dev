@@ -9,6 +9,10 @@
 #include <thread>
 #include <chrono>
 
+#include <gst/gst.h>
+#include <glib.h>
+#include <gst/rtsp-server/rtsp-server.h>
+
 #include "../data/structs.h"
 #include "../rootstream/rootstream.h"
 #include "../clientstream/clientstream.h"
@@ -34,6 +38,9 @@ private:
     std::thread startstreamserverThread[maxstreams];
     std::thread startsendframesThread[maxstreams];
     std::thread startrootRTSPserverThread;
+
+    // GStreamer variables
+    GstRTSPMediaFactory  *controllerfactory;
 };
 
 #endif //MCS_DEV_CAMERACONTROLLER_H

@@ -8,10 +8,11 @@
 
 clientstream::clientstream() {}; // Default constructor
 
-clientstream::clientstream(Stream clientstream, std::string rootstreampath, std::string camip) {
+clientstream::clientstream(Stream clientstream, std::string rootstreampath, std::string camip, GstRTSPMediaFactory  *controllerfactory) {
     this->thisClientstream = clientstream;
     this->rootstreampath = rootstreampath;
     this->camip = camip;
+    this->factory = controllerfactory;
     this->createstream();
 }
 
@@ -31,6 +32,7 @@ void clientstream::getlaunchstring() {
 
 void clientstream::createstream() {
     if (this->thisClientstream.streamprotocol.compare("rtsp") == 0) {
+        //this->rtspsrc = "( rtspsrc location=rtsp://localhost:8554/192.168.0.62 ! rtph264depay ! h264parse ! rtph264pay name=pay1 pt=97 )";
         this->getlaunchstring();
         this->createRTSPserver();
 
@@ -43,8 +45,9 @@ void clientstream::createRTSPserver() {
     this->server = gst_rtsp_server_new ();
     //gst_rtsp_server_set_address(this->server, this->camip.c_str());
     //gst_rtsp_server_set_service(this->server, reinterpret_cast<const gchar *>(this->thisClientstream.port.c_str()));
+    gst_rtsp_server_set_service(this->server, "9090");
 
-    this->factory = factory = gst_rtsp_media_factory_new ();
+    //this->factory = factory = gst_rtsp_media_factory_new ();
     gst_rtsp_media_factory_set_launch (this->factory, this->rtspsrc);
 
     gst_rtsp_media_factory_set_shared(this->factory, TRUE);
@@ -53,7 +56,8 @@ void clientstream::createRTSPserver() {
     this->mounts = gst_rtsp_server_get_mount_points (this->server);
 
     /* attach the video test signal to the "/test" URL */
-    gst_rtsp_mount_points_add_factory (this->mounts, this->thisClientstream.streamname.c_str() , this->factory);
+    //gst_rtsp_mount_points_add_factory (this->mounts, this->thisClientstream.streamname.c_str() , this->factory);
+    gst_rtsp_mount_points_add_factory (this->mounts, "/test" , this->factory);
     g_object_unref (this->mounts);
 
     /* make a mainloop for the default context */

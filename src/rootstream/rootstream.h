@@ -16,7 +16,7 @@
 class rootstream {
 public:
     rootstream();
-    rootstream(std::string rootstreampath, std::string camip);
+    rootstream(std::string rootstreampath, std::string camip, GstRTSPMediaFactory  *controllerfactory);
 
     // GStreamer functions
     void getrootlaunchstring();

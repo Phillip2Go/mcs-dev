@@ -7,10 +7,10 @@
 
 rootstream::rootstream() {}; // Default constructor
 
-rootstream::rootstream(std::string rootstreampath, std::string camip) {
+rootstream::rootstream(std::string rootstreampath, std::string camip, GstRTSPMediaFactory  *controllerfactory) {
     this->rootstreampath = rootstreampath;
     this->camip = camip;
-
+    this->rootfactory = controllerfactory;
     this->createrootstream();
 
     // OpenCV start
@@ -32,6 +32,7 @@ void rootstream::getrootlaunchstring() {
 }
 
 void rootstream::createrootstream() {
+    //this->rootrtspsrc = "( rtspsrc location=rtsp://192.168.0.62:554:554/MediaInput/h264/stream_1 ! rtph264depay ! h264parse ! rtph264pay name=pay0 pt=96 )";
     this->getrootlaunchstring();
     this->createrootRTSPserver();
 }
@@ -39,7 +40,7 @@ void rootstream::createrootstream() {
 void rootstream::createrootRTSPserver() {
     this->rootserver = gst_rtsp_server_new ();
 
-    this->rootfactory = rootfactory = gst_rtsp_media_factory_new ();
+    // this->rootfactory = rootfactory = gst_rtsp_media_factory_new ();
     gst_rtsp_media_factory_set_launch (this->rootfactory, this->rootrtspsrc);
 
     gst_rtsp_media_factory_set_shared(this->rootfactory, TRUE);
