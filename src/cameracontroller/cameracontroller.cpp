@@ -99,7 +99,7 @@ void cameracontroller::startclientstreams() {
 void cameracontroller::getrootframe() {
     std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> getrootframe()." << std::endl;
     while (1) {
-        this->rootframe = this->thisRootstream.readrootframe();
+        //this->rootframe = this->thisRootstream.readrootframe();
     }
 }
 
@@ -118,7 +118,7 @@ void cameracontroller::sendrootframe() {
         if (streamprotocol.compare("rtsp") == 0) {
 
             while (1) {
-                this->thisClientstreams[i].setrootframe(this->rootframe);
+                //this->thisClientstreams[i].setrootframe(this->rootframe);
             }
 
         } else if (streamprotocol.compare("ndi") == 0) {

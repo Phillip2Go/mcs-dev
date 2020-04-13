@@ -37,7 +37,7 @@ private:
     Camera thisCamera;
     std::string rootstreampath;
     rootstream thisRootstream;
-    cv::Mat rootframe;
+    //cv::Mat rootframe;
     bool initclientstreamsStatus;
     clientstream thisClientstreams[maxstreams];
     std::thread startstreamserverThread[maxstreams];
