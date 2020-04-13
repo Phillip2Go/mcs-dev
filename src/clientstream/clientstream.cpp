@@ -94,6 +94,8 @@ std::string clientstream::getclientstreamprotocol() {
     return this->thisClientstream.streamprotocol;
 }
 
+/*
 void clientstream::setrootframe(cv::Mat frame) {
     this->rootframe = frame;
 }
+ */

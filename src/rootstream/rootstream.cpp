@@ -78,6 +78,7 @@ bool rootstream::check_g_main_loop_is_running() {
     return g_main_loop_is_running(this->rootloop);
 }
 
+/*
 void rootstream::initstream() {
     //this->capture = cv::VideoCapture(this->rootstreampath);
     //this->capture = cv::VideoCapture(0);
@@ -110,3 +111,4 @@ cv::Mat rootstream::readrootframe() {
 
     return frame;
 }
+*/

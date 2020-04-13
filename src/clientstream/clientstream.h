@@ -11,8 +11,9 @@
 #include <gst/gst.h>
 #include <glib.h>
 #include <gst/rtsp-server/rtsp-server.h>
+/*
 #include <opencv2/opencv.hpp>
-
+*/
 #include "../data/structs.h"
 
 
@@ -27,7 +28,9 @@ public:
     void startsendframes();
 
     std::string getclientstreamprotocol();
+    /*
     void setrootframe(cv::Mat frame);
+     */
 
 private:
     Stream thisClientstream;
@@ -46,9 +49,11 @@ private:
     GstRTSPMediaFactory  *factory;
     GstRTSPMountPoints *mounts;
 
+    /*
     // OpenCV variables
     cv::Mat rootframe;
     cv::VideoWriter writer;
+     */
 };
 
 #endif //MCS_DEV_CLIENTSTREAM_H
