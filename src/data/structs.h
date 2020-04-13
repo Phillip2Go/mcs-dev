@@ -13,16 +13,20 @@ const int maxstreams = 15;
 struct Stream {
     std::string streamprotocol;
     std::string port;
+    std::string fps;
     std::string streamname;
-    std::string streamresolution;
+    std::string width;
+    std::string height;
     bool rectangles;
 };
 
 struct Camera {
     std::string protocol;
+    std::string serverip;
     std::string camip;
     std::string authentication;
-    std::string camresolution;
+    std::string width;
+    std::string height;
     std::string camfps;
     std::string at_serverip;
     std::string at_camid;

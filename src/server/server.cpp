@@ -47,12 +47,16 @@ void server::parsexmldata() {
         Camera *thisCam = new Camera();
         if (pRoot->FirstChildElement("protocol")->GetText() != nullptr) {
             thisCam->protocol = getElementText(pRoot->FirstChildElement("protocol"));
+        } if (pRoot->FirstChildElement("serverip")->GetText() != nullptr) {
+            thisCam->serverip = getElementText(pRoot->FirstChildElement("serverip"));
         } if (pRoot->FirstChildElement("camip")->GetText() != nullptr) {
             thisCam->camip = getElementText(pRoot->FirstChildElement("camip"));
         } if (pRoot->FirstChildElement("authentication")->GetText() != nullptr) {
             thisCam->authentication = getElementText(pRoot->FirstChildElement("authentication"));
-        } if (pRoot->FirstChildElement("camresolution")->GetText() != nullptr) {
-            thisCam->camresolution = getElementText(pRoot->FirstChildElement("camresolution"));
+        } if (pRoot->FirstChildElement("width")->GetText() != nullptr) {
+            thisCam->width = getElementText(pRoot->FirstChildElement("width"));
+        } if (pRoot->FirstChildElement("height")->GetText() != nullptr) {
+            thisCam->height = getElementText(pRoot->FirstChildElement("height"));
         } if (pRoot->FirstChildElement("camfps")->GetText() != nullptr) {
             thisCam->camfps = getElementText(pRoot->FirstChildElement("camfps"));
         } if (pRoot->FirstChildElement("at_serverip")->GetText() != nullptr) {
@@ -74,10 +78,14 @@ void server::parsexmldata() {
                 thisStream->streamprotocol = getElementText(streamRoot->FirstChildElement("streamprotocol"));
             } if (streamRoot->FirstChildElement("port")->GetText() != nullptr) {
                 thisStream->port = getElementText(streamRoot->FirstChildElement("port"));
+            } if (streamRoot->FirstChildElement("fps")->GetText() != nullptr) {
+                thisStream->fps = getElementText(streamRoot->FirstChildElement("fps"));
             } if (streamRoot->FirstChildElement("streamname")->GetText() != nullptr) {
                 thisStream->streamname = getElementText(streamRoot->FirstChildElement("streamname"));
-            } if (streamRoot->FirstChildElement("streamresolution")->GetText() != nullptr) {
-                thisStream->streamresolution = getElementText(streamRoot->FirstChildElement("streamresolution"));
+            } if (streamRoot->FirstChildElement("width")->GetText() != nullptr) {
+                thisStream->width = getElementText(streamRoot->FirstChildElement("width"));
+            } if (streamRoot->FirstChildElement("height")->GetText() != nullptr) {
+                thisStream->height = getElementText(streamRoot->FirstChildElement("height"));
             } if (streamRoot->FirstChildElement("rectangles")->GetText() != nullptr) {
                 std::string rectanglescheck = getElementText(streamRoot->FirstChildElement("rectangles"));
                 if (rectanglescheck.compare("true") == 0) {
