@@ -8,10 +8,10 @@
 
 clientstream::clientstream() {}; // Default constructor
 
-clientstream::clientstream(Stream clientstream, std::string rootstreampath, std::string camip, GstRTSPMediaFactory  *controllerfactory) {
+clientstream::clientstream(Stream clientstream, std::string rootstreampath, std::string serverip, GstRTSPMediaFactory  *controllerfactory) {
     this->thisClientstream = clientstream;
     this->rootstreampath = rootstreampath;
-    this->camip = camip;
+    this->serverip = serverip;
     this->factory = controllerfactory;
     this->createstream();
 }
@@ -43,7 +43,7 @@ void clientstream::createstream() {
 
 void clientstream::createRTSPserver() {
     this->server = gst_rtsp_server_new ();
-    //gst_rtsp_server_set_address(this->server, this->camip.c_str());
+    gst_rtsp_server_set_address(this->server, this->serverip.c_str());
     gst_rtsp_server_set_service(this->server, reinterpret_cast<const gchar *>(this->thisClientstream.port.c_str()));
     //gst_rtsp_server_set_service(this->server, "9090");
 
@@ -74,7 +74,7 @@ void clientstream::startstreamserver() {
         // Threading problem
         while (!this->createRTSPserverstatus) {}
         /* start serving gst-rtsp-server */
-        std::cout << "Clientstream -> rtsp://localhost:" + this->thisClientstream.port + this->thisClientstream.streamname << std::endl;
+        std::cout << "Clientstream -> rtsp://" + this->serverip + ":" + this->thisClientstream.port + this->thisClientstream.streamname << std::endl;
         g_main_loop_run (this->loop);
 
     } else if (this->thisClientstream.streamprotocol.compare("ndi") == 0) {

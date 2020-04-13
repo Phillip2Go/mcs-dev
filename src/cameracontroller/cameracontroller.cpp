@@ -64,7 +64,7 @@ void cameracontroller::initclientstreams() {
         //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start init all clientstreams." << std::endl;
 
         for (int i = 0; i < this->thisCamera.streamcounter; ++i) {
-            this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip, this->controllerfactory);
+            this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.serverip, this->controllerfactory);
 
             clientstream *clienstreamThread = &this->thisClientstreams[i];
             this->startstreamserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);

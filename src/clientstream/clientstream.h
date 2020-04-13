@@ -19,7 +19,7 @@
 class clientstream {
 public:
     clientstream();
-    clientstream(Stream clientstream, std::string rootstreampath, std::string camip, GstRTSPMediaFactory  *controllerfactory);
+    clientstream(Stream clientstream, std::string rootstreampath, std::string serverip, GstRTSPMediaFactory  *controllerfactory);
     void getlaunchstring();
     void createstream();
     void createRTSPserver();
@@ -32,6 +32,7 @@ public:
 private:
     Stream thisClientstream;
     std::string rootstreampath;
+    std::string serverip;
     std::string camip;
     std::string streamprotocol;
     std::string launchstring;
