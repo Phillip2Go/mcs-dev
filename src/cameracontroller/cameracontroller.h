@@ -28,6 +28,11 @@ public:
     void initclientstreams();
     void startclientstreams();
 
+    // GStreamer functions
+    void getcontrollerlaunchstring();
+    void createcontrollerserver();
+    void createcontrollerRTSPserver();
+
 private:
     Camera thisCamera;
     std::string rootstreampath;
@@ -40,6 +45,8 @@ private:
     std::thread startrootRTSPserverThread;
 
     // GStreamer variables
+    std::string controllerlaunchstring;
+    const gchar * controllersrc;
     GstRTSPMediaFactory  *controllerfactory;
 };
 

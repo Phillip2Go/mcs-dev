@@ -11,8 +11,22 @@
         <streams>
             <stream>
                 <streamprotocol>rtsp</streamprotocol>
-                <port>8554</port>
-                <streamname>/MediaInput/stream_1</streamname>
+                <port>9090</port>
+                <streamname>/stream_1</streamname>
+                <streamresolution>1920x1080</streamresolution>
+                <rectangles>true</rectangles>
+            </stream>
+            <stream>
+                <streamprotocol>rtsp</streamprotocol>
+                <port>9091</port>
+                <streamname>/stream_2</streamname>
+                <streamresolution>1920x1080</streamresolution>
+                <rectangles>true</rectangles>
+            </stream>
+            <stream>
+                <streamprotocol>rtsp</streamprotocol>
+                <port>9092</port>
+                <streamname>/stream_3</streamname>
                 <streamresolution>1920x1080</streamresolution>
                 <rectangles>true</rectangles>
             </stream>

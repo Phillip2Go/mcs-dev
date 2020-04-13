@@ -476,6 +476,30 @@ gst/sdp/gstsdpmessage.h
 gst/sdp/gstmikey.h
 -
 
+/Users/phillipmai/CLionProjects/mcs-dev/src/cameracontroller/cameracontroller.cpp
+cameracontroller.h
+/Users/phillipmai/CLionProjects/mcs-dev/src/cameracontroller/cameracontroller.h
+
+/Users/phillipmai/CLionProjects/mcs-dev/src/cameracontroller/cameracontroller.h
+string
+-
+thread
+-
+chrono
+-
+gst/gst.h
+-
+glib.h
+-
+gst/rtsp-server/rtsp-server.h
+-
+../data/structs.h
+/Users/phillipmai/CLionProjects/mcs-dev/src/data/structs.h
+../rootstream/rootstream.h
+/Users/phillipmai/CLionProjects/mcs-dev/src/rootstream/rootstream.h
+../clientstream/clientstream.h
+/Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.h
+
 /Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.cpp
 iostream
 -
@@ -500,6 +524,18 @@ opencv2/opencv.hpp
 
 /Users/phillipmai/CLionProjects/mcs-dev/src/data/structs.h
 string
+-
+
+/Users/phillipmai/CLionProjects/mcs-dev/src/rootstream/rootstream.h
+string
+-
+gst/gst.h
+-
+glib.h
+-
+gst/rtsp-server/rtsp-server.h
+-
+opencv2/opencv.hpp
 -
 
 /usr/local/Cellar/glib/2.64.1/include/glib-2.0/gio/gaction.h

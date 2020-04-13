@@ -8,13 +8,9 @@
 cameracontroller::cameracontroller() {}; // Default constructor
 
 cameracontroller::cameracontroller(Camera camera) {
-    this->controllerfactory = gst_rtsp_media_factory_new();
     this->thisCamera = camera;
     this->rootstreampath = this->getrootstreampath();
-
-    if (!this->rootstreampath.compare("") == 0) {
-        this->thisRootstream = rootstream(this->rootstreampath, this->thisCamera.camip, this->controllerfactory);
-    }
+    this->createcontrollerserver();
 }
 
 std::string cameracontroller::getrootstreampath() {
@@ -25,6 +21,77 @@ std::string cameracontroller::getrootstreampath() {
     } else {
         std::cout << " --ERROR--\nCamera (" + this->thisCamera.camip + ") -> Connection could not be established.\n" << std::endl;
         return "";
+    }
+}
+
+void cameracontroller::getcontrollerlaunchstring() {
+    gchar *launchsstart = "( rtspsrc location=";
+    gchar *launchsettings = " latency=0 ! rtph264depay ! h264parse ! rtph264pay name=pay0 pt=96 )";
+
+    int srclength = this->rootstreampath.length();
+    gchar src_array[srclength + 1];
+    strcpy(src_array, this->rootstreampath.c_str());
+
+    this->controllerlaunchstring += launchsstart;
+    this->controllerlaunchstring += src_array;
+    this->controllerlaunchstring+= launchsettings;
+    this->controllersrc = controllerlaunchstring.c_str();
+}
+
+void cameracontroller::createcontrollerserver() {
+    this->getcontrollerlaunchstring();
+    this->createcontrollerRTSPserver();
+}
+
+void cameracontroller::createcontrollerRTSPserver() {
+    this->controllerfactory = gst_rtsp_media_factory_new();
+
+    gst_rtsp_media_factory_set_launch (this->controllerfactory, this->controllersrc);
+    gst_rtsp_media_factory_set_shared (this->controllerfactory, TRUE);
+}
+
+void cameracontroller::initclientstreams() {
+    if (!this->rootstreampath.compare("") == 0) {
+        //this->thisRootstream = rootstream(this->rootstreampath, this->thisCamera.camip, this->controllerfactory);
+        //rootstream *rootstreamThread = &this->thisRootstream;
+        //this->startrootRTSPserverThread = std::thread(&rootstream::startrootstreamserver, rootstreamThread);
+
+        //bool check = this->thisRootstream.check_g_main_loop_is_running();
+        //while (check == 0) {check = this->thisRootstream.check_g_main_loop_is_running();}
+
+        //std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+
+        //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start init all clientstreams." << std::endl;
+
+        for (int i = 0; i < this->thisCamera.streamcounter; ++i) {
+            this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip, this->controllerfactory);
+
+            clientstream *clienstreamThread = &this->thisClientstreams[i];
+            this->startstreamserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);
+
+            // OpenCV threads
+            //this->startsendframesThread[i] = std::thread(&clientstream::startsendframes, clienstreamThread);
+        }
+        this->initclientstreamsStatus = true;
+
+        //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Init all clientstreams." << std::endl;
+        this->startclientstreams();
+    }
+}
+
+void cameracontroller::startclientstreams() {
+    if (!this->rootstreampath.compare("") == 0) {
+        //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start all clientstreams." << std::endl;
+        for (int i = 0; i < this->thisCamera.streamcounter; i++) {
+            if (i < 1) {
+                //std::cout << "Camera (" + this->thisCamera.camip + ") -> rtsp://localhost:8554/" + this->thisCamera.camip << std::endl;
+                //this->startrootRTSPserverThread.join();
+            }
+            this->startstreamserverThread[i].join();
+
+            // OpenCV threads
+            //this->startsendframesThread[i].join();
+        }
     }
 }
 
@@ -56,48 +123,6 @@ void cameracontroller::sendrootframe() {
 
         } else if (streamprotocol.compare("ndi") == 0) {
 
-        }
-    }
-}
-
-void cameracontroller::initclientstreams() {
-    if (!this->rootstreampath.compare("") == 0) {
-        rootstream *rootstreamThread = &this->thisRootstream;
-        this->startrootRTSPserverThread = std::thread(&rootstream::startrootstreamserver, rootstreamThread);
-
-        bool check = this->thisRootstream.check_g_main_loop_is_running();
-        while (check == 0) {check = this->thisRootstream.check_g_main_loop_is_running();}
-
-        //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start init all clientstreams." << std::endl;
-
-        for (int i = 0; i < this->thisCamera.streamcounter; ++i) {
-             this->thisClientstreams[i] = clientstream(this->thisCamera.clientstreams[i], this->rootstreampath, this->thisCamera.camip, this->controllerfactory);
-
-            clientstream *clienstreamThread = &this->thisClientstreams[i];
-            this->startstreamserverThread[i] = std::thread(&clientstream::startstreamserver, clienstreamThread);
-
-            // OpenCV threads
-            //this->startsendframesThread[i] = std::thread(&clientstream::startsendframes, clienstreamThread);
-        }
-        this->initclientstreamsStatus = true;
-
-        //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Init all clientstreams." << std::endl;
-        this->startclientstreams();
-    }
-}
-
-void cameracontroller::startclientstreams() {
-    if (!this->rootstreampath.compare("") == 0) {
-        //std::cout << "Cameracontroller: (" + this->thisCamera.camip + ") -> Start all clientstreams." << std::endl;
-        for (int i = 0; i < this->thisCamera.streamcounter; i++) {
-            if (i < 1) {
-                std::cout << "Camera (" + this->thisCamera.camip + ") -> rtsp://localhost:8554/" + this->thisCamera.camip << std::endl;
-                this->startrootRTSPserverThread.join();
-            }
-            this->startstreamserverThread[i].join();
-
-            // OpenCV threads
-            //this->startsendframesThread[i].join();
         }
     }
 }

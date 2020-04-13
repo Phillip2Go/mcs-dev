@@ -41,9 +41,9 @@ void rootstream::createrootRTSPserver() {
     this->rootserver = gst_rtsp_server_new ();
 
     // this->rootfactory = rootfactory = gst_rtsp_media_factory_new ();
-    gst_rtsp_media_factory_set_launch (this->rootfactory, this->rootrtspsrc);
+    //gst_rtsp_media_factory_set_launch (this->rootfactory, this->rootrtspsrc);
 
-    gst_rtsp_media_factory_set_shared(this->rootfactory, TRUE);
+    //gst_rtsp_media_factory_set_shared (this->rootfactory, TRUE);
 
     /* get the default mount points from the rootserver */
     this->rootmounts = gst_rtsp_server_get_mount_points (this->rootserver);
