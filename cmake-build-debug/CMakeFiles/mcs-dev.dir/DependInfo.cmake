@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/phillipmai/CLionProjects/mcs-dev/libs/tinyxml2/tinyxml2.cpp" "/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/libs/tinyxml2/tinyxml2.cpp.o"
-  "/Users/phillipmai/CLionProjects/mcs-dev/main.cpp" "/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/main.cpp.o"
-  "/Users/phillipmai/CLionProjects/mcs-dev/src/cameracontroller/cameracontroller.cpp" "/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/src/cameracontroller/cameracontroller.cpp.o"
-  "/Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.cpp" "/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/src/clientstream/clientstream.cpp.o"
-  "/Users/phillipmai/CLionProjects/mcs-dev/src/rootstream/rootstream.cpp" "/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/src/rootstream/rootstream.cpp.o"
-  "/Users/phillipmai/CLionProjects/mcs-dev/src/server/server.cpp" "/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/src/server/server.cpp.o"
+  "/Users/phillipmai/Desktop/mcs-dev/libs/tinyxml2/tinyxml2.cpp" "/Users/phillipmai/Desktop/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/libs/tinyxml2/tinyxml2.cpp.o"
+  "/Users/phillipmai/Desktop/mcs-dev/main.cpp" "/Users/phillipmai/Desktop/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/main.cpp.o"
+  "/Users/phillipmai/Desktop/mcs-dev/src/cameracontroller/cameracontroller.cpp" "/Users/phillipmai/Desktop/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/src/cameracontroller/cameracontroller.cpp.o"
+  "/Users/phillipmai/Desktop/mcs-dev/src/clientstream/clientstream.cpp" "/Users/phillipmai/Desktop/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/src/clientstream/clientstream.cpp.o"
+  "/Users/phillipmai/Desktop/mcs-dev/src/rootstream/rootstream.cpp" "/Users/phillipmai/Desktop/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/src/rootstream/rootstream.cpp.o"
+  "/Users/phillipmai/Desktop/mcs-dev/src/server/server.cpp" "/Users/phillipmai/Desktop/mcs-dev/cmake-build-debug/CMakeFiles/mcs-dev.dir/src/server/server.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

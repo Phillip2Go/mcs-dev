@@ -26,7 +26,11 @@ std::string cameracontroller::getrootstreampath() {
 
 void cameracontroller::getcontrollerlaunchstring() {
     gchar *launchsstart = "( rtspsrc location=";
-    gchar *launchsettings = " latency=0 ! rtph264depay ! h264parse ! rtph264pay name=pay0 pt=96 )";
+    //gchar *launchsettings = " latency=0 ! rtph264depay ! video/x-h264,framerate=60/1 ! h264parse ! rtph264pay name=pay0 pt=96 )";
+    //gchar *launchsettings = " latency=0 ! decodebin ! videoconvert ! x264enc ! rtph264pay name=pay0 pt=96 )";
+
+    gchar *launchsettings = " latency=0 ! rtph264depay ! video/x-h264,framerate=30/1 ! h264parse ! rtph264pay name=pay0 pt=96 )";
+
 
     int srclength = this->rootstreampath.length();
     gchar src_array[srclength + 1];
@@ -48,6 +52,7 @@ void cameracontroller::createcontrollerRTSPserver() {
 
     gst_rtsp_media_factory_set_launch (this->controllerfactory, this->controllersrc);
     gst_rtsp_media_factory_set_shared (this->controllerfactory, TRUE);
+    gst_rtsp_media_factory_set_buffer_size (this->controllerfactory, 0);
 }
 
 void cameracontroller::initclientstreams() {

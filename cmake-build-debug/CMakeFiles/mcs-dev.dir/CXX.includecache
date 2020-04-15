@@ -476,61 +476,75 @@ gst/sdp/gstsdpmessage.h
 gst/sdp/gstmikey.h
 -
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.DynamicLoad.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.DynamicLoad.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Find.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Find.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.FrameSync.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.FrameSync.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Lib.cplusplus.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Lib.cplusplus.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Lib.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Lib.h
 Processing.NDI.compat.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.compat.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.compat.h
 Processing.NDI.structs.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.structs.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.structs.h
 Processing.NDI.Find.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Find.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Find.h
 Processing.NDI.Recv.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Recv.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Recv.h
 Processing.NDI.Recv.ex.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Recv.ex.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Recv.ex.h
 Processing.NDI.Send.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Send.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Send.h
 Processing.NDI.Routing.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Routing.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Routing.h
 Processing.NDI.utilities.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.utilities.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.utilities.h
 Processing.NDI.deprecated.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.deprecated.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.deprecated.h
 Processing.NDI.FrameSync.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.FrameSync.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.FrameSync.h
 Processing.NDI.DynamicLoad.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.DynamicLoad.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.DynamicLoad.h
 Processing.NDI.Lib.cplusplus.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Lib.cplusplus.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Lib.cplusplus.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Recv.ex.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Recv.ex.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Recv.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Recv.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Routing.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Routing.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Send.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Send.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.compat.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.compat.h
 stdbool.h
 -
 stdint.h
 -
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.deprecated.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.deprecated.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.structs.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.structs.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.utilities.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.utilities.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/libs/tinyxml2/tinyxml2.h
+/Users/phillipmai/Desktop/mcs-dev/libs/tinyxml2/tinyxml2.cpp
+tinyxml2.h
+/Users/phillipmai/Desktop/mcs-dev/libs/tinyxml2/tinyxml2.h
+new
+-
+stddef.h
+-
+stdarg.h
+-
+cstddef
+-
+cstdarg
+-
+
+/Users/phillipmai/Desktop/mcs-dev/libs/tinyxml2/tinyxml2.h
 ctype.h
 -
 limits.h
@@ -560,21 +574,21 @@ android/log.h
 assert.h
 -
 
-/Users/phillipmai/CLionProjects/mcs-dev/main.cpp
+/Users/phillipmai/Desktop/mcs-dev/main.cpp
 iostream
 -
 gst/gst.h
 -
 src/server/server.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/server/server.h
+/Users/phillipmai/Desktop/mcs-dev/src/server/server.h
 includes/ndi/Processing.NDI.Lib.h
-/Users/phillipmai/CLionProjects/mcs-dev/includes/ndi/Processing.NDI.Lib.h
+/Users/phillipmai/Desktop/mcs-dev/includes/ndi/Processing.NDI.Lib.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/src/cameracontroller/cameracontroller.cpp
+/Users/phillipmai/Desktop/mcs-dev/src/cameracontroller/cameracontroller.cpp
 cameracontroller.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/cameracontroller/cameracontroller.h
+/Users/phillipmai/Desktop/mcs-dev/src/cameracontroller/cameracontroller.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/src/cameracontroller/cameracontroller.h
+/Users/phillipmai/Desktop/mcs-dev/src/cameracontroller/cameracontroller.h
 string
 -
 thread
@@ -588,19 +602,19 @@ glib.h
 gst/rtsp-server/rtsp-server.h
 -
 ../data/structs.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/data/structs.h
+/Users/phillipmai/Desktop/mcs-dev/src/data/structs.h
 ../rootstream/rootstream.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/rootstream/rootstream.h
+/Users/phillipmai/Desktop/mcs-dev/src/rootstream/rootstream.h
 ../clientstream/clientstream.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.h
+/Users/phillipmai/Desktop/mcs-dev/src/clientstream/clientstream.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.cpp
+/Users/phillipmai/Desktop/mcs-dev/src/clientstream/clientstream.cpp
 iostream
 -
 clientstream.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.h
+/Users/phillipmai/Desktop/mcs-dev/src/clientstream/clientstream.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/src/clientstream/clientstream.h
+/Users/phillipmai/Desktop/mcs-dev/src/clientstream/clientstream.h
 thread
 -
 chrono
@@ -614,13 +628,19 @@ gst/rtsp-server/rtsp-server.h
 opencv2/opencv.hpp
 -
 ../data/structs.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/data/structs.h
+/Users/phillipmai/Desktop/mcs-dev/src/data/structs.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/src/data/structs.h
+/Users/phillipmai/Desktop/mcs-dev/src/data/structs.h
 string
 -
 
-/Users/phillipmai/CLionProjects/mcs-dev/src/rootstream/rootstream.h
+/Users/phillipmai/Desktop/mcs-dev/src/rootstream/rootstream.cpp
+rootstream.h
+/Users/phillipmai/Desktop/mcs-dev/src/rootstream/rootstream.h
+
+/Users/phillipmai/Desktop/mcs-dev/src/rootstream/rootstream.h
+iostream
+-
 string
 -
 gst/gst.h
@@ -632,21 +652,21 @@ gst/rtsp-server/rtsp-server.h
 opencv2/opencv.hpp
 -
 
-/Users/phillipmai/CLionProjects/mcs-dev/src/server/server.cpp
+/Users/phillipmai/Desktop/mcs-dev/src/server/server.cpp
 server.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/server/server.h
+/Users/phillipmai/Desktop/mcs-dev/src/server/server.h
 
-/Users/phillipmai/CLionProjects/mcs-dev/src/server/server.h
+/Users/phillipmai/Desktop/mcs-dev/src/server/server.h
 string
 -
 thread
 -
 ../data/structs.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/data/structs.h
+/Users/phillipmai/Desktop/mcs-dev/src/data/structs.h
 ../cameracontroller/cameracontroller.h
-/Users/phillipmai/CLionProjects/mcs-dev/src/cameracontroller/cameracontroller.h
+/Users/phillipmai/Desktop/mcs-dev/src/cameracontroller/cameracontroller.h
 ../../libs/tinyxml2/tinyxml2.h
-/Users/phillipmai/CLionProjects/mcs-dev/libs/tinyxml2/tinyxml2.h
+/Users/phillipmai/Desktop/mcs-dev/libs/tinyxml2/tinyxml2.h
 
 /usr/local/Cellar/glib/2.64.1/include/glib-2.0/gio/gaction.h
 gio/giotypes.h

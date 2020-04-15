@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++14 -fdiagnostics-color -g -fprofile-arcs -ftest-coverage -i
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/phillipmai/CLionProjects/mcs-dev/include -I/usr/local/Cellar/libffi/3.2.1/lib/libffi-3.2.1/include -I/usr/local/Cellar/gstreamer/1.16.2/include/gstreamer-1.0 -I/usr/local/Cellar/glib/2.64.1/include -I/usr/local/Cellar/glib/2.64.1/include/glib-2.0 -I/usr/local/Cellar/glib/2.64.1/lib/glib-2.0/include -I/usr/local/opt/gettext/include -I/usr/local/Cellar/pcre/8.44/include -I/Library/Frameworks/GStreamer.framework/Headers -I/usr/local/Cellar/gst-plugins-base/1.16.2/include/gstreamer-1.0 -isystem /usr/local/Cellar/opencv/4.2.0_3/include/opencv4 
+CXX_INCLUDES = -I/Users/phillipmai/Desktop/mcs-dev/include -I/usr/local/Cellar/libffi/3.2.1/lib/libffi-3.2.1/include -I/usr/local/Cellar/gstreamer/1.16.2/include/gstreamer-1.0 -I/usr/local/Cellar/glib/2.64.1/include -I/usr/local/Cellar/glib/2.64.1/include/glib-2.0 -I/usr/local/Cellar/glib/2.64.1/lib/glib-2.0/include -I/usr/local/opt/gettext/include -I/usr/local/Cellar/pcre/8.44/include -I/Library/Frameworks/GStreamer.framework/Headers -I/usr/local/Cellar/gst-plugins-base/1.16.2/include/gstreamer-1.0 -isystem /usr/local/Cellar/opencv/4.2.0_3/include/opencv4 
 

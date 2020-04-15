@@ -47,10 +47,10 @@ RM = "/Users/phillipmai/Library/Application Support/JetBrains/Toolbox/apps/CLion
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/phillipmai/CLionProjects/mcs-dev
+CMAKE_SOURCE_DIR = /Users/phillipmai/Desktop/mcs-dev
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/phillipmai/Desktop/mcs-dev/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -77,14 +77,14 @@ preinstall:
 CMakeFiles/mcs-dev.dir/all:
 	$(MAKE) -f CMakeFiles/mcs-dev.dir/build.make CMakeFiles/mcs-dev.dir/depend
 	$(MAKE) -f CMakeFiles/mcs-dev.dir/build.make CMakeFiles/mcs-dev.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target mcs-dev"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/phillipmai/Desktop/mcs-dev/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target mcs-dev"
 .PHONY : CMakeFiles/mcs-dev.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mcs-dev.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/phillipmai/Desktop/mcs-dev/cmake-build-debug/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mcs-dev.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/phillipmai/CLionProjects/mcs-dev/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/phillipmai/Desktop/mcs-dev/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mcs-dev.dir/rule
 
 # Convenience name for target.
